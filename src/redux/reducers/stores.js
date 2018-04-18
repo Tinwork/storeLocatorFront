@@ -7,9 +7,11 @@
 const stores = (state = [], action) => {
   switch(action.type) {
     case 'ADD_STORES':
+      console.log('add store');
+      
       return [
         ...state,
-        action.datas
+        ...action.datas
       ]
     default:
       return state;

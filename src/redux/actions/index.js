@@ -12,7 +12,7 @@ export const VisibilityFilters = {
  */
 export const addStores = stores => ({
   type: 'ADD_STORES',
-  stores
+  datas: stores
 });
 
 /**

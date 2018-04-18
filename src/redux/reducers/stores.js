@@ -1,14 +1,12 @@
 /**
- * Stores
+ * Stores::Store
  * 
- * @param {Array} state 
+ * @param {Object} state 
  * @param {Object} action 
  */
 const stores = (state = [], action) => {
   switch(action.type) {
-    case 'ADD_STORES':
-      console.log('add store');
-      
+    case 'ADD_STORES':      
       return [
         ...state,
         ...action.datas

@@ -16,6 +16,16 @@ export const addStores = stores => ({
 });
 
 /**
+ * Add Input
+ * 
+ * @param {String} input 
+ */
+export const addInput = input => ({
+  type: 'ADD_INPUT',
+  datas: input
+});
+
+/**
  * Set Visibility Filter
  * 
  * @param {String} filter 

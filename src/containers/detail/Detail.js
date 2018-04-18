@@ -22,9 +22,9 @@ const getVisibleStores = (stores, filter, criteria) => {
     case 'SHOW_ALL':
       return stores;
     case 'SHOW_BY_NAME':
-      return stores.filter(s => s.retailer.includes(criteria));
+      return stores.filter(s => s.retailer.retailer.includes(criteria));
     case 'SHOW_BY_LOCATION':
-      return stores.filter(s => s.city === criteria.toLowerCase());
+      return stores.filter(s => s.retailer.city === criteria.toLowerCase());
     default:
       return stores;
   }
@@ -36,7 +36,7 @@ const getVisibleStores = (stores, filter, criteria) => {
  * @param {Object} state 
  */
 const mapStateToProps = state => ({
-  stores: getVisibleStores(state.stores, state.visibilityFilter)
+  stores: getVisibleStores(state.stores, state.visibilityFilter, state.input.value)
 });
 
 /**
@@ -66,7 +66,7 @@ class Detail extends Component {
   async getStoreData() {
     let data = null;
     try {
-      data = await this.apiManager.get('https://demomagento.local/rest/V1/storelocator/retailer/1');
+      data = await this.apiManager.get('https://demomagento.local/rest/V1/storelocator/retailers');
       this.props.dispatch(addStores(data));
     } catch(e) {
       console.log(e);

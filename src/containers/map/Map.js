@@ -62,8 +62,8 @@ class Map extends Component {
       return (
         <Marker
           key={idx}
-          lat={parseFloat(store.latitude)}
-          lng={parseFloat(store.longitude)}
+          lat={parseFloat(store.retailer.latitude)}
+          lng={parseFloat(store.retailer.longitude)}
           retailer={store}
         />
       );

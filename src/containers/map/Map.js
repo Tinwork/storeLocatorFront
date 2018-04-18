@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import Marker from '../../components/Marker/Marker';
+import Modal from '../../components/Modal/Modal';
+import { getVisibleStores } from '../../helper/filter';
 
 // Import redux components
 import { connect } from 'react-redux';
@@ -13,39 +15,37 @@ import './style/index.css';
 const API_KEY = 'AIzaSyDgIM7Hcp_ITaYxN3oUTUyJE-cnS-7cTeE';
 
 /**
- * Get Stores
- * 
- * @param {Array} stores 
- * @param {String} filter 
- */
-const getStores = (stores, filter) => {
-  switch(filter) {
-    case 'SHOW_ALL':
-      return stores;
-    default:
-      return stores;
-  }
-};
-
-/**
  * Map State To Props
  * 
  * @param {Object} state 
  */
 const mapStateToProps = state => ({
-  stores: getStores(state.stores, state.visibilityFilter)
+  stores: getVisibleStores(state.stores, state.visibilityFilter, state.input.value)
 })
 
 /**
  * Map Component
  */
 class Map extends Component {
+  /**
+   * Constructor
+   * 
+   * @param {Object} props 
+   */
+  constructor(props) {
+    super(props);
+    this.state = {
+      retailer: null
+    };
+  }
+
+  // Static props regarding the center of the map
   static defaultProps = {
     center: {
       lat: 48.866667,
       lng: 2.333333
     },
-    zoom: 11
+    zoom: 12
   };
 
   /**
@@ -65,8 +65,20 @@ class Map extends Component {
           lat={parseFloat(store.retailer.latitude)}
           lng={parseFloat(store.retailer.longitude)}
           retailer={store}
+          setStore={this.getStore.bind(this)}
         />
       );
+    });
+  }
+
+  /**
+   * Get Marker Address Id
+   * 
+   * @param {String} addressId 
+   */
+  getStore(retailer) {
+    this.setState({
+      retailer
     });
   }
 
@@ -87,6 +99,7 @@ class Map extends Component {
             {marker}
           </GoogleMapReact>
         </div>
+        <Modal store={this.state.retailer}/>
       </div>
     );
   }

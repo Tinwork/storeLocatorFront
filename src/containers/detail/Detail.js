@@ -3,32 +3,13 @@ import GetApiManager from '../../services/network/ApiManager';
 import { connect } from 'react-redux';
 import { addStores } from '../../redux/actions';
 import { isEmpty } from 'lodash';
+import { getVisibleStores } from '../../helper/filter';
 
 // import component
 import List from '../../components/List/List';
 
 // import css
 import './style/index.css';
-
-/**
- * Get Visible Stores
- * 
- * @param {Array} stores 
- * @param {String} filter
- * @return {Array} stores
- */
-const getVisibleStores = (stores, filter, criteria) => {
-  switch (filter) {
-    case 'SHOW_ALL':
-      return stores;
-    case 'SHOW_BY_NAME':
-      return stores.filter(s => s.retailer.retailer.includes(criteria));
-    case 'SHOW_BY_LOCATION':
-      return stores.filter(s => s.retailer.city === criteria.toLowerCase());
-    default:
-      return stores;
-  }
-};
 
 /**
  * Map State To Props

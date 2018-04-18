@@ -14,7 +14,8 @@ export default class Marker extends Component {
   
   /**
    * Generate Style
-   *
+   * 
+   * @return {Object} style
    */
   generateStyle() {
     return {
@@ -30,8 +31,13 @@ export default class Marker extends Component {
     }
   }
 
-  handleClick(addressId) {
-    console.log(addressId);
+  /**
+   * Handle Click
+   * 
+   * @param {} addressId 
+   */
+  handleClick() {
+    this.props.setStore(this.props.retailer);
   }
 
   /**
@@ -39,7 +45,7 @@ export default class Marker extends Component {
    */
   render() {
     return (
-      <div style={this.generateStyle()} onClick={this.handleClick.bind(this, this.props.retailer.address_id)} className="marker">
+      <div style={this.generateStyle()} onClick={this.handleClick.bind(this, this.props.retailer.retailer.address_id)} className="marker">
       </div>
     );
   }

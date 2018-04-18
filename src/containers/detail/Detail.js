@@ -7,6 +7,9 @@ import { isEmpty } from 'lodash';
 // import component
 import List from '../../components/List/List';
 
+// import css
+import './style/index.css';
+
 /**
  * Get Visible Stores
  * 
@@ -15,7 +18,6 @@ import List from '../../components/List/List';
  * @return {Array} stores
  */
 const getVisibleStores = (stores, filter, criteria) => {
-  console.log(filter);
   switch (filter) {
     case 'SHOW_ALL':
       return stores;

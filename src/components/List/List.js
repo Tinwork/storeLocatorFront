@@ -14,7 +14,6 @@ export default class List extends Component {
   getComponent() {
     const stores = this.props.stores;      
     const template = stores.map((store, idx) => {
-      console.log(store);
       return (
         <div className="card blue darken-1" key={idx}>
           <div className="card-content white-text">

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addInput, setVisibilityFilter } from '../../redux/actions';
+import { addInput, setVisibilityFilter, addEndpoint } from '../../redux/actions';
 
 // Import component
 import Input from '../../components/Input/Input';
@@ -32,8 +32,13 @@ class Navbar extends Component {
     this.props.dispatch(setVisibilityFilter('SHOW_BY_NAME'));
   }
 
+  /**
+   * Get Endpoint Value
+   * 
+   * @param {String} value 
+   */
   getEndpointValue(value) {
-    console.log(value);
+    this.props.dispatch(addEndpoint(value));
   }
 
   /**

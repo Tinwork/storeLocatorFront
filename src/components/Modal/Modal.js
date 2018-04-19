@@ -10,15 +10,6 @@ import './style/index.css';
  */
 export default class Modal extends Component {
   /**
-   * Constructor
-   * 
-   * @param {Object} props 
-   */
-  constructor(props) {
-    super(props);
-  }
-
-  /**
    * Get List Template
    */
   getListTemplate() {

@@ -26,6 +26,16 @@ export const addInput = input => ({
 });
 
 /**
+ * Add Endpoint
+ * 
+ * @param {String} input 
+ */
+export const addEndpoint = input => ({
+  type: 'ADD_ENDPOINT',
+  datas: input
+});
+
+/**
  * Set Visibility Filter
  * 
  * @param {String} filter 

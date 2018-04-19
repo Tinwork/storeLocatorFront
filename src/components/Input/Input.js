@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash';
 
 /**
@@ -48,13 +47,3 @@ export default class Input extends Component {
     );
   }
 }
-
-Input.propTypes = {
-  fields: {
-    type: PropTypes.string,
-    placeholder: PropTypes.string,
-    label: {
-      name: PropTypes.string,
-    }
-  }
-};

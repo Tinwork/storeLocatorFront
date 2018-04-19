@@ -1,4 +1,4 @@
-.nav-wrapper {
+.navbar .nav-wrapper {
   display: flex; }
-  .nav-wrapper .input-field {
+  .navbar .nav-wrapper .input-field {
     width: 100%; }

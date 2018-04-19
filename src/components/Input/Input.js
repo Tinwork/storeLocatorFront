@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { isEmpty } from 'lodash';
 
+import './style/index.css';
+
 /**
  * Input Component
  */

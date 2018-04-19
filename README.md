@@ -5,7 +5,7 @@ This is the store locator front which use the React library
 # Install
 
 - Clone this repo
-- Go in the repo and launch the command ```yarn install````
+- Go in the repo and launch the command ```yarn install```
 
 # Starting the project
 

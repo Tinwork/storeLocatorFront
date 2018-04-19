@@ -35,7 +35,9 @@ class Map extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      retailer: null
+      retailer: null,
+      // this is not a good practice but...
+      modalOpen: false
     };
   }
 
@@ -78,8 +80,15 @@ class Map extends Component {
    */
   getStore(retailer) {
     this.setState({
-      retailer
+      retailer,
+      modalOpen: !this.state.modalOpen
     });
+  }
+
+  resetModalState() {
+    this.setState({
+      modalOpen: !this.state.modalOpen
+    })
   }
 
   /**
@@ -99,7 +108,7 @@ class Map extends Component {
             {marker}
           </GoogleMapReact>
         </div>
-        <Modal store={this.state.retailer}/>
+        <Modal store={this.state.retailer} modalStatus={this.state.modalOpen} setModalState={this.resetModalState.bind(this)}/>
       </div>
     );
   }

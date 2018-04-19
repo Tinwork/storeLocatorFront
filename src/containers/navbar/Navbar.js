@@ -5,6 +5,9 @@ import { addInput, setVisibilityFilter } from '../../redux/actions';
 // Import component
 import Input from '../../components/Input/Input';
 
+// Import css
+import './style/index.css';
+
 /**
  * Map State To Props
  * 
@@ -25,9 +28,12 @@ class Navbar extends Component {
    * @param {String} value
    */
   getInputValue(value) {
-    console.log(this.props);
     this.props.dispatch(addInput(value));
     this.props.dispatch(setVisibilityFilter('SHOW_BY_NAME'));
+  }
+
+  getEndpointValue(value) {
+    console.log(value);
   }
 
   /**
@@ -42,11 +48,20 @@ class Navbar extends Component {
       placeholder: 'Search your store',
     }
 
+    const endpointFields = {
+      label: {
+        name: 'code',
+      },
+      type: 'search',
+      placeholder: 'Paste your endpoint'
+    };
+
     return (
       <div className="navbar">
         <nav>
           <div className="nav-wrapper">
             <Input fields={inputFields} sendInputValue={this.getInputValue.bind(this)}/>
+            <Input fields={endpointFields} sendInputValue={this.getEndpointValue.bind(this)}/>
           </div>
         </nav>
       </div>

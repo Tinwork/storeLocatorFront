@@ -69,8 +69,8 @@ export default class Modal extends Component {
       element.push(
         <tr key={i}>
           <td>{date[i]}</td>
-          <td>Close</td>
-          <td>Close</td>
+          <td>Closed</td>
+          <td>Closed</td>
         </tr>
       );
     }
@@ -100,7 +100,7 @@ export default class Modal extends Component {
               <tr>
                 <th>Day</th>
                 <th>Open at</th>
-                <th>Close at</th>
+                <th>Closed at</th>
               </tr>
             </thead>
             <tbody>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import GetApiManager from '../../services/network/ApiManager';
 import { connect } from 'react-redux';
-import { addStores } from '../../redux/actions';
+import { addStores, resetStores } from '../../redux/actions';
 import { isEmpty } from 'lodash';
 import { getVisibleStores } from '../../helper/filter';
 
@@ -65,6 +65,9 @@ class Detail extends Component {
     let data = null;
     try {
       data = await this.apiManager.get(endPoint);
+      // reset the store if the user change the endpoint
+      this.props.dispatch(resetStores());
+      // then add the datas back to the store
       this.props.dispatch(addStores(data));
       this.setState({
         loading: false,
@@ -85,7 +88,7 @@ class Detail extends Component {
     return (
       <div className="sidebarView">
         {isEmpty(this.props.stores) && !this.state.loading ? (
-          <p>No store available</p>
+          <blockquote>No store available</blockquote>
         ): (
           <List stores={this.props.stores}/>
         )}

@@ -11,6 +11,9 @@ const stores = (state = [], action) => {
         ...state,
         ...action.datas
       ]
+    case 'RESET_STORE':
+      state = [];
+      return state;
     default:
       return state;
   }

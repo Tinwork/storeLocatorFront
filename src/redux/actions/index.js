@@ -16,6 +16,14 @@ export const addStores = stores => ({
 });
 
 /**
+ * Reset Stores
+ */
+export const resetStores = () => ({
+  type: 'RESET_STORE',
+  datas: null
+});
+
+/**
  * Add Input
  * 
  * @param {String} input 
